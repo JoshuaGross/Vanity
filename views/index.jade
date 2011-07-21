@@ -1,0 +1,23 @@
+h1= title
+p
+  i #{tagline}
+#nav
+  ul#passions
+    li
+      a(href='/dev') Development
+    li
+      a(href='/life') Life &amp; Faith
+    li
+      a(href='/bevs') Beverages
+//    a(href='/blog') All
+
+#content
+  h2 About Joshua Gross
+  h2 Contact
+  - if(contact.email)
+    p You can reach me at 
+    a(href='mailto:'+contact.email)!= contact.email
+    .
+    !=partial('contact_other', { locals: { also: 'also ' } })
+  - else
+    p!=partial('contact_other', { locals: { also: '' } })
