@@ -1,1 +1,1 @@
-web: NODE_ENV=heroku node vanity.js
+web: node vanity.js

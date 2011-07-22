@@ -66,5 +66,6 @@ app.get('/', function(req, res){
 // - pretty, clean layout
 
 port = process.env.PORT || port;
+console.log(process.env);
 app.listen(port);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
