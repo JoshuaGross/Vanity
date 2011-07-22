@@ -30,6 +30,10 @@ app.configure('dotcloud', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 });
 
+app.configure('heroku', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+});
+
 app.configure('production', function(){
   port = 80;
   app.use(express.errorHandler()); 
