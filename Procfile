@@ -1,1 +1,1 @@
-web: node vanity.js
+web: export NODE_ENV=heroku; node vanity.js
