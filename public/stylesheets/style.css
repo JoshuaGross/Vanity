@@ -1,8 +1,9 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+#header {
+  margin-top: 20px;
+  background: url(/images/profile_100.jpg) no-repeat;
+  background-size: 100px 100px;
+  min-height: 100px;
 }
-
-a {
-  color: #00B7FF;
+#header > h1, #header > h2, #header > h3, #header > h4, #header > h5, #header > h6, #header > div {
+  margin-left: 120px;
 }

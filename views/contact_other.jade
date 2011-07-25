@@ -1,9 +1,9 @@
-p You can #{also} find me on 
+span You can #{also} find me on 
   - if (contact.facebook)
     a(href=contact.facebook) Facebook
     ,
   - if (contact.twitter)
-    a(href='http://www.twitter.com/'+contact.twitter)!= '@'+contact.twitter
+    a(href='http://www.twitter.com/'+contact.twitter)!= 'Twitter @'+contact.twitter
     ,
   - if (contact.gplus)
     - if (contact.twitter || contact.facebook)

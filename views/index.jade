@@ -1,23 +1,20 @@
-h1= title
-p
-  i #{tagline}
-#nav
-  ul#passions
-    li
-      a(href='/dev') Development
-    li
-      a(href='/life') Life &amp; Faith
-    li
-      a(href='/bevs') Beverages
-//    a(href='/blog') All
-
-#content
-  h2 About Joshua Gross
-  h2 Contact
-  - if(contact.email)
-    p You can reach me at 
-    a(href='mailto:'+contact.email)!= contact.email
+.twelve.columns
+  |  
+.row
+.nine.columns#body
+  #content
+    h4 Contact
+    - if(contact.email)
+      p You can reach me at 
+        a(href='mailto:'+contact.email)!= contact.email
+        .
+        !=partial('contact_other', { locals: { also: 'also ' } })
+    - else
+      p!=partial('contact_other', { locals: { also: '' } })
+.three.columns#sidebar
+  p Joshua is currently an iOS developer with 
+    a(href='http://www.astrid.com') Astrid
     .
-    !=partial('contact_other', { locals: { also: 'also ' } })
-  - else
-    p!=partial('contact_other', { locals: { also: '' } })
+  p Joshua was last seen at Zeitgeist in San Francisco.
+  p Cool links:
+  p Recently read articles:

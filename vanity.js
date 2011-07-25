@@ -43,8 +43,9 @@ app.configure('production', function(){
 
 app.get('/', function(req, res){
   res.render('index', {
+    html_head_ifs: '<!--[if lt IE 7]><html class="ie ie6" lang="en"><[endif]--><!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]--><!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->',
     title: 'josh is gross',
-    tagline: 'home of Joshua Gross',
+    tagline: 'developer, third culture kid, human',
     contact: {
       email: 'joshua.gross@gmail.com',
       facebook: 'http://www.facebook.com/joshisgross',
@@ -66,6 +67,5 @@ app.get('/', function(req, res){
 // - pretty, clean layout
 
 port = process.env.PORT || port;
-console.log(process.env);
 app.listen(port);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
