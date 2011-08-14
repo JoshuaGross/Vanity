@@ -1,16 +1,12 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express');
-
 var app = module.exports = express.createServer();
-
 var port;
 
 // Configuration
-
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -40,7 +36,6 @@ app.configure('production', function(){
 });
 
 // Routes
-
 app.get('/', function(req, res){
   res.render('index', {
     html_head_ifs: '<!--[if lt IE 7]><html class="ie ie6" lang="en"><[endif]--><!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]--><!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->',
@@ -50,13 +45,14 @@ app.get('/', function(req, res){
       email: 'joshua.gross@gmail.com',
       facebook: 'http://www.facebook.com/joshisgross',
       twitter: 'joshuagross',
-      gplus: 'gplusid',
+      gplus: '103805160491385357340',
     }
   });
 });
 
 // Todo:
 // - about text
+// - resume
 // - pull in photos from Gravatar, Facebook, Twitter, G+
 // - passions, blog, RSS
 // - Post to Twitter, Facebook, G+ with nice URLs
@@ -64,7 +60,6 @@ app.get('/', function(req, res){
 //   - pull location from FB, Yelp, Twitter, G+
 // - Pull in read (marked?) articles from Google Reader
 // - favicon
-// - pretty, clean layout
 
 port = process.env.PORT || port;
 app.listen(port);
