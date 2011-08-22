@@ -1,12 +1,21 @@
 // Config
 var resume_path = '/resources/resume.pdf';
-var password = 'password';
+var vanity_version_int = 1;
 
 // Module dependencies.
+var async = require('async');
 var express = require('express');
 var fs = require('fs');
+var redis_lib = require("redis");
 var app = module.exports = express.createServer();
 var port;
+
+// Redis
+var redis = redis_lib.createClient();
+redis.on("error", function (err) {
+  console.log("Redis connection error to " + redis.host + ":" + redis.port + " - " + err);
+  process.exit(1);
+});
 
 // Express App Configuration
 app.configure(function(){
@@ -39,17 +48,23 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', function(req, res){
-  res.render('index', {
-    html_head_ifs: '<!--[if lt IE 7]><html class="ie ie6" lang="en"><[endif]--><!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]--><!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->',
-    title: 'josh is gross',
-    tagline: 'developer, third culture kid, human',
-    resume_path: resume_path,
-    contact: {
-      email: 'joshua.gross@gmail.com',
-      facebook: 'http://www.facebook.com/joshisgross',
-      twitter: 'joshuagross',
-      gplus: '103805160491385357340',
-    }
+  redis.mget('a:title', 'a:tagline', 'a:contact', function (err, replies) {
+    var title = replies[0];
+    var tagline = replies[1];
+    var contact = JSON.parse(replies[2]);
+
+    res.render('index', {
+      html_head_ifs: '<!--[if lt IE 7]><html class="ie ie6" lang="en"><[endif]--><!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]--><!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->',
+      title: title,
+      tagline: tagline,
+      resume_path: resume_path,
+      contact: {
+        email: contact.email,
+        facebook: contact.facebook,
+        twitter: contact.twitter,
+        gplus: contact.gplus
+      }
+    });
   });
 });
 
@@ -79,6 +94,4 @@ if (!resume_exists) {
   console.log('WARNING: no resume file found. Place it at /public'+resume_path);
 }
 
-if (password == 'password') {
-  console.log('WARNING: you really should change the default password!');
-}
+require('./redis_migrations.js')(redis, vanity_version_int);

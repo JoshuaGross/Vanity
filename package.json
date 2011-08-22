@@ -1,9 +1,11 @@
 {
-    "name": "application-name"
+    "name": "vanity"
   , "version": "0.0.1"
   , "private": true
   , "dependencies": {
       "express": "2.4.2"
     , "jade": ">= 0.0.1"
+    , "redis": ">= 0.0.1"
+    , "async": ">= 0.0.1"
   }
 }

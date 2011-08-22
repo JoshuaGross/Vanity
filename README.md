@@ -12,6 +12,10 @@ Contributing
 ------------
 Fork the GitHub project. I recommend hosting your Vanity project on DotCloud. Feel free to contact me (joshisgross.com) or send me pull requests on GitHub.
 
+Database Conventions
+--------------------
+Database related fields and metadata should have a key prefixed with "d:". Cached data that is strictly temporary should be prefixed with "c:". All other app data should be prefixed with "a:".
+
 License
 -------
 Vanity is distributed under the MIT license (expat flavor):
