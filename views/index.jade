@@ -1,20 +1,20 @@
 .twelve.columns
-  |  
+  |
 .row
 .nine.columns#body
   #content
     h4 Contact
     - if(contact.email)
-      p You can reach me at 
+      p You can reach me at
         a(href='mailto:'+contact.email)!= contact.email
         .
         !=partial('contact_other', { locals: { also: 'also ' } })
     - else
       p!=partial('contact_other', { locals: { also: '' } })
-    p Feel free to grab 
+    p Feel free to grab
       a(href=resume_path) my resume.
 .three.columns#sidebar
-  p I am currently an iOS developer with 
+  p I am currently an iOS developer with
     a(href='http://www.astrid.com') Astrid
     .
   p I was last seen at Zeitgeist in San Francisco.
