@@ -29,21 +29,21 @@ app.configure(function(){
 
 app.configure('development', function(){
   port = 3000;
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('dotcloud', function(){
   port = 8080;
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('heroku', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
   port = 80;
-  app.use(express.errorHandler()); 
+  app.use(express.errorHandler());
 });
 
 // Routes

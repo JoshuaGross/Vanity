@@ -1,4 +1,4 @@
-span You can #{also} find me on 
+span You can #{also} find me on
   - if (contact.facebook)
     a(href=contact.facebook) Facebook
     ,
@@ -7,6 +7,6 @@ span You can #{also} find me on
     ,
   - if (contact.gplus)
     - if (contact.twitter || contact.facebook)
-      span and 
+      span and
     a(href='http://plus.google.com/'+contact.gplus) G+
     .
